@@ -50,7 +50,7 @@ app.listen(3000, ()=>{
 app.get('/coments/new', (req,res)=>{ 
     res.render('comments/new')
 })
-app.post('/coments/new',(req,res)=>{
+app.post('/coments',(req,res)=>{
     const {username, comment} = req.body;
     comments.push({ id:myuuid, username, comment});
     res.redirect('/coments');
@@ -63,16 +63,17 @@ app.get('/coments/:id',(req,res) =>{
 
 })
 app.get('/coments/:id/edit',(req,res)=>{
+    const {id} = req.params;
     const cid = comments.find(c => c.id === id);
     res.render('comments/edit', {cid});
 })
 app.patch('/coments/:id',(req,res)=>{
     const {id} = req.params;
     let newComment = req.body.comment;
-    console.log(req.body.comment);
+    
     const cid = comments.find(c => c.id === id);
     cid.comment = newComment;
-    res.redirect('/coments/new')
+    res.redirect('/coments')
 })
 app.get('/tacos',(req,res)=>{
     res.send('GET /tacos response');

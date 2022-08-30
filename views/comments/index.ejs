@@ -9,12 +9,12 @@
 <body>
     <h1>Comments</h1>
     <ul>
-        <% for(let comment of comments){%>
+        <% for(let c of comments){%>
             <li>
-               <h2> <%= comment.username %> says:</h2> 
-                <b><%= comment.comment %> </b>
+               <h2> <%= c.username %> says:</h2> 
+                <b><%= c.comment %> </b>
                 <div>
-                    <a href="/coments/<%= comment.id %> "> credit card </a> 
+                    <a href="/coments/<%= c.id %> "> credit card </a> 
                 </div>
                 
 
